@@ -17,32 +17,34 @@ class App  extends Component {
 
         this.state={
 
-            news:JSON
+            news:JSON,
+            filterd:JSON
         }
        
        
     }
 
+     filterdNews(keywords)
+      {
+        console.log(keywords);
+        let filterd=this.state.news.filter((item)=>{
+            return item.title.toLowerCase().indexOf(keywords.toLowerCase())>-1
+        })
+        this.setState({filterd:filterd});
+      }
+
      render () {
          return(
            <div>
-                <Header/>
-                <NewsList newsData={this.state.news}></NewsList>                     
+                <Header newsSearch={(data)=>{this.filterdNews(data)}}/>
+                <NewsList newsData={this.state.filterd}></NewsList>                     
             </div>
          ) 
        }    
-    }
+    }    
 
 
-
-
-
-   
-
-    
-
-
-ReactDOM.render(<App/>, document.getElementById('root'))
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 
 

@@ -1,5 +1,6 @@
 import React , {Component} from'react';
 
+
 class Header extends Component {
     constructor(props)
     {
@@ -13,8 +14,9 @@ class Header extends Component {
     }
 
     inputChange(event){
-        console.log(event.target.value);
-        this.setState({'search':event.target.value})
+       // console.log(event.target.value);
+        this.setState({'search':event.target.value});
+        this.props.newsSearch(event.target.value);
     }
     render(){
 
